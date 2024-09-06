@@ -60,7 +60,7 @@ client.on('message', async (topic, message) => {
       payload.UV,
       payload.Vbat,
     ];
-  } else if (topic === '/v2/pucv/apiarios/esp/estacion') {
+  } else if (topic === 'v2/pucv/apiarios/esp/estacion') {
     query = `INSERT INTO estaciones_v2 (fecha_recibido, fecha_payload, id_estacion, tiempo, temperatura, humedad, presion, velocidad_viento, direccion_viento, lluvia, lluvia_total, lluvia_last, uv)
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`;
     values = [
@@ -95,7 +95,7 @@ client.on('message', async (topic, message) => {
       payload.Pluv,
       payload.Vbat,
     ];
-  } else if (topic === '/v2/pucv/apiarios/esp/colmena') {
+  } else if (topic === 'v2/pucv/apiarios/esp/colmena') {
     query = `INSERT INTO colmenas_v2 (fecha_recibido, fecha_payload, id_estacion, id_colmena, tiempo, temperatura, humedad, vibracion_x, lluvia, voltaje_bateria)
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
     values = [fecha_recibido, fecha_payload, payload.IDMeteo, payload.Ncol, payload.tiempo, payload.T, payload.H, payload.VibX, payload.Pluv, payload.Vbat];
