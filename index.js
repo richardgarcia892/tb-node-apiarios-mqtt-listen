@@ -29,9 +29,9 @@ const client = mqtt.connect('mqtt://mqtt:proyecto4Pi@apiarios.cl:1883');
 client.on('connect', () => {
   console.log('MQTT broker connected successfully');
   client.subscribe('/pucv/apiarios/esp/estacion');
-  client.subscribe('/v2/pucv/apiarios/esp/estacion');
+  client.subscribe('v2/pucv/apiarios/esp/estacion');
   client.subscribe('/pucv/apiarios/esp/colmena');
-  client.subscribe('/v2/pucv/apiarios/esp/colmena');
+  client.subscribe('v2/pucv/apiarios/esp/colmena');
 });
 
 client.on('message', async (topic, message) => {
@@ -107,6 +107,10 @@ client.on('message', async (topic, message) => {
   } catch (err) {
     console.error('Error inserting data', err);
   }
+});
+
+app.get('/ping', (req, res) => {
+  res.json({ status: 'server running' });
 });
 
 app.get('/excel/:table', async (req, res) => {
