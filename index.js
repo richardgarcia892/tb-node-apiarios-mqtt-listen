@@ -109,7 +109,7 @@ client.on('message', async (topic, message) => {
   }
 });
 
-app.get('/ping', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ status: 'server running' });
 });
 
